@@ -1,5 +1,5 @@
 module Game where
 
-runGame = undefined
+data GameState = EndGame deriving (Eq, Show)
 
-isGameOver = True
+runGame _ = EndGame
