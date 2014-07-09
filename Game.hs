@@ -1,5 +1,7 @@
 module Game where
 
-data GameState = EndGame deriving (Eq, Show)
+data GameState = EndGame | SomeResultantAction_ChangeMe deriving (Eq, Show)
+data GameAction = SomeGameAction_ChangeMe
 
-runGame _ = EndGame
+runGame [] = EndGame
+runGame _ = SomeResultantAction_ChangeMe
