@@ -7,17 +7,17 @@ main :: IO ()
 main = hspec $ do
     describe "Move left" $do
         it "should return decrement the x-coordinate" $do
-            moveLeft (1, 3) `shouldBe` (0, 3)
-            moveLeft (2, 2) `shouldBe` (1, 2)
+            moveLeft (ColumnAndRow 1 3) `shouldBe` (ColumnAndRow 0 3)
+            moveLeft (ColumnAndRow 2 2) `shouldBe` (ColumnAndRow 1 2)
     describe "Move right" $do
         it "should return increment the x-coordinate" $do
-            moveRight (1, 3) `shouldBe` (2, 3)
-            moveRight (2, 2) `shouldBe` (3, 2)
+            moveRight (ColumnAndRow 1 3) `shouldBe` (ColumnAndRow 2 3)
+            moveRight (ColumnAndRow 2 2) `shouldBe` (ColumnAndRow 3 2)
     describe "Move up" $do
         it "should return decrement the y-coordinate" $do
-            moveUp (1, 3) `shouldBe` (1, 2)
-            moveUp (2, 2) `shouldBe` (2, 1)
+            moveUp (ColumnAndRow 1 3) `shouldBe` (ColumnAndRow 1 2)
+            moveUp (ColumnAndRow 2 2) `shouldBe` (ColumnAndRow 2 1)
     describe "Move down" $do
         it "should return increment the y-coordinate" $do
-            moveDown (1, 3) `shouldBe` (1, 4)
-            moveDown (2, 2) `shouldBe` (2, 3)
+            moveDown (ColumnAndRow 1 3) `shouldBe` (ColumnAndRow 1 4)
+            moveDown (ColumnAndRow 2 2) `shouldBe` (ColumnAndRow 2 3)
