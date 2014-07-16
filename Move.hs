@@ -1,3 +1,3 @@
 module Move where
 
-moveLeft coordinate = (1, 2)
+moveLeft coordinates = (fst coordinates - 1, snd coordinates)
