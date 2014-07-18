@@ -11,4 +11,7 @@ main = hspec $ do
         context "when placing in an empty Inventory" $ do
             it "should be the only item in the Inventory" $ do
                 (UselessItem `placeIn` initialInventory) `shouldBe` Inventory [UselessItem]
+        context "when placing in an inventory that already has an item" $ do
+            it "should construct an Inventory with two items" $ do
+                (UselessItem `placeIn` Inventory [UselessItem]) `shouldBe` Inventory [UselessItem, UselessItem]
 
