@@ -1,11 +1,18 @@
 module Board where
 
-data Creature = NoCreature | User deriving (Eq, Show)
-data Cell = NewCell { creature :: Creature } deriving (Eq, Show)
+import Inventory
 
-plainEmptyCell = NewCell NoCreature
+data Creature = NoCreature | User deriving (Eq, Show)
+data Cell = NewCell { creatureIn :: Creature, itemIn :: Item } deriving (Eq, Show)
+
+plainEmptyCell = NewCell NoCreature NoItem
 
 displayCreature User = "@"
 displayCreature _ = " "
 
-displayCell cell = displayCreature (creature cell)
+displayItem Money = "$"
+displayItem _ = " "
+
+displayCell cell
+    | creatureIn cell == NoCreature = displayItem (itemIn cell)
+    | otherwise = displayCreature (creatureIn cell)

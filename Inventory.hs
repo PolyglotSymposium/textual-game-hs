@@ -1,6 +1,6 @@
 module Inventory where
 
-data Item = UselessItem deriving (Show, Eq)
+data Item = NoItem | Money deriving (Show, Eq)
 
 data Inventory = Inventory [Item] deriving (Show, Eq)
 

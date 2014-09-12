@@ -4,14 +4,14 @@ import Test.Hspec
 import Inventory
 
 main = hspec $ do
-    describe "Making a new Inventory" $ do
-        it "should make an empty Inventory" $ do
+    describe "A newly created inventory" $ do
+        it "should be empty" $ do
             initialInventory `shouldBe` Inventory []
-    describe "Placing items in the inventory" $ do
-        context "when placing in an empty Inventory" $ do
-            it "should be the only item in the Inventory" $ do
-                (UselessItem `placeIn` initialInventory) `shouldBe` Inventory [UselessItem]
-        context "when placing in an inventory that already has an item" $ do
-            it "should construct an Inventory with two items" $ do
-                (UselessItem `placeIn` Inventory [UselessItem]) `shouldBe` Inventory [UselessItem, UselessItem]
+    describe "Placing an item into the inventory" $ do
+        context "when the inventory was empty" $ do
+            it "should result in an inventory with one item" $ do
+                (Money `placeIn` initialInventory) `shouldBe` Inventory [Money]
+        context "when there was already an item in the inventory" $ do
+            it "should result in an Inventory with two items" $ do
+                (Money `placeIn` Inventory [Money]) `shouldBe` Inventory [Money, Money]
 
