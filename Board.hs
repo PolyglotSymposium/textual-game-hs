@@ -1,6 +1,11 @@
 module Board where
 
-data Cell = PlainMiddle deriving (Eq, Show)
+data Creature = NoCreature | User deriving (Eq, Show)
+data Cell = NewCell { creature :: Creature } deriving (Eq, Show)
 
-display _ = " "
-plainEmptyCell = PlainMiddle
+plainEmptyCell = NewCell NoCreature
+
+displayCreature User = "@"
+displayCreature _ = " "
+
+displayCell cell = displayCreature (creature cell)
