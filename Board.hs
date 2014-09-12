@@ -3,9 +3,9 @@ module Board where
 import Inventory
 
 data Creature = NoCreature | User deriving (Eq, Show)
-data Cell = NewCell { creatureIn :: Creature, itemIn :: Item } deriving (Eq, Show)
-
-plainEmptyCell = NewCell NoCreature NoItem
+data Cell = PlainCell { creatureIn :: Creature, itemIn :: Item }
+    | ExitCell { creatureIn :: Creature }
+    deriving (Eq, Show)
 
 displayCreature User = "@"
 displayCreature _ = " "
@@ -13,6 +13,8 @@ displayCreature _ = " "
 displayItem Money = "$"
 displayItem _ = " "
 
-displayCell cell
-    | creatureIn cell == NoCreature = displayItem (itemIn cell)
-    | otherwise = displayCreature (creatureIn cell)
+displayCell ExitCell {creatureIn=c} = "⌘"
+
+displayCell PlainCell {creatureIn=creature, itemIn=item}
+    | creature == NoCreature = displayItem item
+    | otherwise = displayCreature creature
