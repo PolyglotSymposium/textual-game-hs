@@ -2,22 +2,20 @@ module Board where
 
 import Inventory
 
-data Creature = NoCreature | User deriving (Eq, Show)
+data Creature = NoCreature | User deriving Eq
 data Cell = PlainCell { creatureIn :: Creature, itemIn :: Item }
     | ExitCell { creatureIn :: Creature }
-    deriving (Eq, Show)
+    deriving Eq
 
-displayCreature User = "@"
-displayCreature _ = " "
+instance Show Creature where
+    show User = "@"
+    show _ = " "
 
-displayItem Money = "$"
-displayItem _ = " "
-
-displayCell ExitCell {creatureIn=c} = "⌘"
-
-displayCell PlainCell {creatureIn=creature, itemIn=item}
-    | creature == NoCreature = displayItem item
-    | otherwise = displayCreature creature
+instance Show Cell where
+    show ExitCell {creatureIn=c} = "⌘"
+    show PlainCell {creatureIn=creature, itemIn=item}
+        | creature == NoCreature = show item
+        | otherwise = show creature
 
 type Board = [[Cell]]
 
@@ -26,4 +24,5 @@ heightOf board = length board
 
 boardWithSize nColumns nRows = [[PlainCell NoCreature NoItem | i <- [1..nColumns]] | j <- [1..nRows]]
 
-displayBoard board = unlines [foldl1 (++) [displayCell cell | cell <- row] | row <- board]
+instance Show Board where
+    show board = unlines [foldl1 (++) [show cell | cell <- row] | row <- board]
