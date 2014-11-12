@@ -25,9 +25,10 @@ main = hspec $do
                 displayCell (ExitCell NoCreature) `shouldBe` "⌘"
     describe "Creating a two-by-three default board" $do
         context "results in a board" $do
+            let subject = (boardWithSize 2 3)
             it "with a length of two" $do
-                lengthOf (boardWithSize 2 3) `shouldBe` 2
+                lengthOf subject `shouldBe` 2
             it "with a height of two" $do
-                heightOf (boardWithSize 2 3) `shouldBe` 3
+                heightOf subject `shouldBe` 3
             it "with all empty plain cells" $do
-                displayBoard (boardWithSize 2 3) `shouldBe` "  \n  \n  \n"
+                displayBoard subject `shouldBe` "  \n  \n  \n"
