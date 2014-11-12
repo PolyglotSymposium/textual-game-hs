@@ -40,5 +40,4 @@ main = hspec $do
             it "with a height of two" $do
                 heightOf subject `shouldBe` 2
             it "with all empty plain cells" $do
-                pending
                 displayBoard subject `shouldBe` "   \n   \n"

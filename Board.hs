@@ -19,12 +19,12 @@ displayCell PlainCell {creatureIn=creature, itemIn=item}
     | creature == NoCreature = displayItem item
     | otherwise = displayCreature creature
 
-data Board = BoardOf { lengthOf :: Int, heightOf :: Int, cells :: [Cell] }
+data Board = BoardOf { lengthOf :: Int, heightOf :: Int, cells :: [[Cell]] }
 
 boardWithSize nColumns nRows = BoardOf {
     lengthOf = nColumns,
     heightOf = nRows,
-    cells = [PlainCell NoCreature NoItem | i <- [0..nRows*nColumns]]
+    cells = [[PlainCell NoCreature NoItem | i <- [1..nColumns]] | j <- [1..nRows]]
 }
 
-displayBoard board = "  \n  \n  \n"
+displayBoard board = unlines [foldl1 (++) [displayCell cell | cell <- row] | row <- cells board]
