@@ -26,8 +26,8 @@ main = hspec $do
     describe "Creating a two-by-three default board" $do
         context "results in a board" $do
             it "with a length of two" $do
-                lengthOf (boardWithSize 2 2) `shouldBe` 2
+                lengthOf (boardWithSize 2 3) `shouldBe` 2
             it "with a height of two" $do
-                pending
+                heightOf (boardWithSize 2 3) `shouldBe` 3
             it "with all empty plain cells" $do
                 pending
