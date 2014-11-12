@@ -5,7 +5,7 @@ import Board
 import Inventory
 
 main :: IO ()
-main = hspec $ do
+main = hspec $do
     describe "The display of a plain cell" $do
         context "when it is empty" $do
             it "appears empty" $do
@@ -23,3 +23,11 @@ main = hspec $ do
         context "when it is empty" $do
             it "appears as the Apple command symbol" $do
                 displayCell (ExitCell NoCreature) `shouldBe` "⌘"
+    describe "Creating a two-by-three default board" $do
+        context "results in a board" $do
+            it "with a length of two" $do
+                lengthOf (boardWithSize 2 2) `shouldBe` 2
+            it "with a height of two" $do
+                pending
+            it "with all empty plain cells" $do
+                pending
