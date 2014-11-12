@@ -32,3 +32,13 @@ main = hspec $do
                 heightOf subject `shouldBe` 3
             it "with all empty plain cells" $do
                 displayBoard subject `shouldBe` "  \n  \n  \n"
+    describe "Creating a three-by-two default board" $do
+        context "results in a board" $do
+            let subject = (boardWithSize 3 2)
+            it "with a length of two" $do
+                lengthOf subject `shouldBe` 3
+            it "with a height of two" $do
+                heightOf subject `shouldBe` 2
+            it "with all empty plain cells" $do
+                pending
+                displayBoard subject `shouldBe` "   \n   \n"

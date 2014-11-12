@@ -19,11 +19,12 @@ displayCell PlainCell {creatureIn=creature, itemIn=item}
     | creature == NoCreature = displayItem item
     | otherwise = displayCreature creature
 
-data Board = BoardOf [[Cell]]
+data Board = BoardOf { lengthOf :: Int, heightOf :: Int, cells :: [Cell] }
 
-boardWithSize _ _ = BoardOf []
+boardWithSize nColumns nRows = BoardOf {
+    lengthOf = nColumns,
+    heightOf = nRows,
+    cells = [PlainCell NoCreature NoItem | i <- [0..nRows*nColumns]]
+}
 
-lengthOf (BoardOf _) = 2
-heightOf (BoardOf _) = 3
-
-displayBoard (BoardOf _) = "  \n  \n  \n"
+displayBoard board = "  \n  \n  \n"
