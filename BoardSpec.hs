@@ -30,4 +30,4 @@ main = hspec $do
             it "with a height of two" $do
                 heightOf (boardWithSize 2 3) `shouldBe` 3
             it "with all empty plain cells" $do
-                pending
+                displayBoard (boardWithSize 2 3) `shouldBe` "  \n  \n  \n"

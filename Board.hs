@@ -25,3 +25,5 @@ boardWithSize _ _ = BoardOf []
 
 lengthOf (BoardOf _) = 2
 heightOf (BoardOf _) = 3
+
+displayBoard (BoardOf _) = "  \n  \n  \n"
