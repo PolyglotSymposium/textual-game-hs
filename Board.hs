@@ -26,4 +26,7 @@ heightOf board = length board
 
 boardWithSize nColumns nRows = [[PlainCell NoCreature NoItem | i <- [1..nColumns]] | j <- [1..nRows]]
 
+--replaceCell :: Board -> Int -> Int -> Cell -> Board
+replaceCell board column row _ = board
+
 displayBoard board = unlines [foldl1 (++) [displayCell cell | cell <- row] | row <- board]

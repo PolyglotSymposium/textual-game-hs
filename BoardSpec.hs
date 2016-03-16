@@ -24,17 +24,21 @@ main = hspec $do
             it "appears as the Apple command symbol" $do
                 displayCell (ExitCell NoCreature) `shouldBe` "⌘"
     describe "Creating a two-by-three default board" $do
+        let subject = boardWithSize 2 3
         context "results in a board" $do
-            let subject = (boardWithSize 2 3)
             it "with a length of two" $do
                 lengthOf subject `shouldBe` 2
             it "with a height of two" $do
                 heightOf subject `shouldBe` 3
             it "with all empty plain cells" $do
                 displayBoard subject `shouldBe` "  \n  \n  \n"
+        context "and then replacing the lower righthand corner cell with an exit cell" $do
+            let subject2 = replaceCell subject 1 2 (ExitCell NoCreature)
+            it "should create a board with an exit cell in the lower righthand corner" $do
+                displayBoard subject2 `shouldBe` "  \n  \n ⌘\n"
     describe "Creating a three-by-two default board" $do
+        let subject = boardWithSize 3 2
         context "results in a board" $do
-            let subject = (boardWithSize 3 2)
             it "with a length of two" $do
                 lengthOf subject `shouldBe` 3
             it "with a height of two" $do
